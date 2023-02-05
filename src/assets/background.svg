@@ -1,0 +1,14 @@
+<svg width="1440" height="2772" viewBox="0 0 1440 2772" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1440" height="2772" fill="url(#paint0_linear_19_3)"/>
+<ellipse cx="643.5" cy="-789.5" rx="2926.5" ry="1698.5" fill="url(#paint1_linear_19_3)"/>
+<defs>
+<linearGradient id="paint0_linear_19_3" x1="951.5" y1="-8.78929e-05" x2="-818.894" y2="1228.93" gradientUnits="userSpaceOnUse">
+<stop stop-color="#414567"/>
+<stop offset="1" stop-color="#414669"/>
+</linearGradient>
+<linearGradient id="paint1_linear_19_3" x1="2549.5" y1="-911" x2="-650.5" y2="1197.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FCFEFC"/>
+<stop offset="1" stop-color="#F6F0F9"/>
+</linearGradient>
+</defs>
+</svg>

@@ -21,6 +21,11 @@
   color: #2c3e50;
 }
 
+body {
+  background-image: url('@/assets/background.svg');
+  margin:0;
+}
+
 nav {
   padding: 30px;
 

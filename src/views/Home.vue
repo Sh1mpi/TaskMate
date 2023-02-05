@@ -3,6 +3,7 @@
     <my-logo></my-logo>
     <my-input></my-input>
   </div>
+  <task-item></task-item>
 </template>
 
 <script>

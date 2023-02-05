@@ -25,6 +25,7 @@
         font-size: 24px;
         font-family: 'Montserrat-Medium';
         padding-left: 50px;
+        transition: all .5s;
         &:focus {
             outline: none;
             width: 670px;
@@ -34,6 +35,7 @@
             width: 675px;
             // height: 40px;
             background: rgba($color: #a6a6a6, $alpha: .1);
+
         }
     }
     img {
