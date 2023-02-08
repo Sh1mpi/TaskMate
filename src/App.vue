@@ -13,6 +13,11 @@
   src: url('@/fonts/Montserrat-Medium.ttf');
 }
 
+@font-face {
+  font-family: 'Montserrat-Regular';
+  src: url('@/fonts/Montserrat-Regular.ttf');
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -23,6 +28,7 @@
 
 body {
   background-image: url('@/assets/background.svg');
+  background-repeat: no-repeat;
   margin:0;
 }
 
