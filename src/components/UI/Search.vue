@@ -15,6 +15,7 @@
         min-width: 668px;
         display: flex;
         align-items: center;
+        margin-left: 100px;
     }
 
     input {

@@ -28,6 +28,7 @@
 
 body {
   background-image: url('@/assets/background.svg');
+  background-size: 100%;
   background-repeat: no-repeat;
   margin:0;
 }
@@ -45,3 +46,4 @@ nav {
   }
 }
 </style>
+

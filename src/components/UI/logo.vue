@@ -11,5 +11,7 @@
         font-family: 'Montserrat-SemiBold';
         font-size: 36px;
         margin: 0;
+        left: 0;
+        position: absolute;
     }
 </style>
