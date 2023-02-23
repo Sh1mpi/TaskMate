@@ -19,18 +19,11 @@
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Montserrat,Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-body {
-  background-image: url('@/assets/background.svg');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  margin:0;
 }
 
 nav {

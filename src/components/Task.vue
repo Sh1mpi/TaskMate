@@ -44,6 +44,7 @@
     border-radius: 28px;
     margin: 0 auto;
     margin-top: 36px;
+    padding-bottom: 20px;
     text-align: left;
     display: flex;
     flex-direction: column;

@@ -6,7 +6,7 @@
 </template>
 <script>
     export default{
-        name: 'my-input'
+        name: 'my-search'
     }
 </script>
 <style lang="scss" scoped>

@@ -1,6 +1,6 @@
 <template>
     <div class="btn">
-        <button class="btn_first" @click="add">
+        <button class="btn_first" v-on:click="add">
             <slot></slot>
         </button>
         <div class="btn_back"></div>
@@ -11,13 +11,18 @@
         name: 'my-button',
         methods: {
             add(event) {
-                let button = document.querySelector('.btn_first')
-                console.log(button.style);
-                button.style.animationName = 'anim'
-                button.style.animationDuration = '.3s'
-                button.style.animationIterationCount = '1'
+                let href = event.target.getAttribute('href')
+                if (href ==null){
+                    href = event.target.firstElementChild.getAttribute('href')
+                }
 
-            }
+                let button = document.querySelector('.btn_first')
+                button.classList.add('btn__active')
+                setTimeout(()=>{ button.classList.remove('btn__active');
+                this.$router.push({ path: `${href}`})},300);
+        
+            },
+            
         }
     }
     
@@ -37,7 +42,9 @@
     border: 0px;
     padding: 0 20px;
     z-index: 1;
-    // animation: anim .3s 1 linear;
+    }
+    & .btn__active{
+        animation: anim .3s 1 linear;
     }
     & .btn_back {
     width: 100%;

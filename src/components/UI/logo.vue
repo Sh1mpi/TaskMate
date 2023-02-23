@@ -1,5 +1,5 @@
 <template>
-    <h1 class="logo">TaskMate</h1>
+    <h1 class="logo"><a href="/">TaskMate</a></h1>
 </template>
 <script>
     export default{
@@ -7,11 +7,16 @@
     }
 </script>
 <style lang="scss" scoped>
-    h1 {
+    .logo {
         font-family: 'Montserrat-SemiBold';
         font-size: 36px;
         margin: 0;
         left: 0;
         position: absolute;
+        & a {
+            color:#2c3e50;
+            text-decoration: none;
+        }
     }
+
 </style>
