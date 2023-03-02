@@ -3,18 +3,14 @@
         <my-logo></my-logo>
         <h1 class="add-task">Добавление задачи</h1>
     </my-nav>
-    <my-form @new-title="title = $event"></my-form>
-    <p>{{ title }}</p>
-    <p>{{ subtasks }}</p>
-    <p>{{ value }}</p>
+    <my-form @new-title="task = $event"></my-form>
+    <p>{{ task }}</p>
 </template>
 <script>
     export default{
         data() {
             return {
-                title: '',
-                subtasks: '',
-                value: '',
+                task: '',
             }
         },
         

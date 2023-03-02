@@ -1,5 +1,5 @@
 <template>
-    <h1 class="logo"><a href="/">TaskMate</a></h1>
+    <h1 class="logo"><router-link to="/" >TaskMate</router-link></h1>
 </template>
 <script>
     export default{

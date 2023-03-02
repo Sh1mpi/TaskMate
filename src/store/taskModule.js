@@ -1,4 +1,13 @@
-// import axios from 'axios'
-// export const taskModule = {
-
-// }
+export const taskModule = {
+    state: {
+        tasks: ['aa']
+    },
+    mutations: {
+        addTask(state){
+            tasks.push('kek')
+        },
+        deleteTask(state){
+            tasks.pop()
+        }
+    }
+}

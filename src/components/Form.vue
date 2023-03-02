@@ -35,12 +35,7 @@
         },
         methods: {
             update(index, value) {
-                console.log(index);
-                console.log(value);
-                console.log(this.subtasks[index-1]);
                 this.subtasks[index-1].content = value;
-
-                this.$emit('new-title', [this.title,this.subtasks]);
             },
             addSubtask() {
                 this.subtasks.push({
@@ -50,14 +45,17 @@
                 });
             },
             save() {
-            // Создаем новый массив, куда будем добавлять значения всех подзадач
-            let subtaskValues = [];
-
-            // Проходим по массиву subtasks и добавляем значения всех подзадач в subtaskValues
-            for(let i=0;i<this.subtasks.length;i++){
-                console.log(this.subtasks[i].content);
-                this.subtasks[i].push(this.subtasks[i].content);
-            }
+                debugger;
+                let output = [this.title]
+                let i = 0
+                while (i < this.subtasks.length){
+                    if(this.subtasks[i].content === ''){
+                        this.subtasks.splice(i,1)
+                    }
+                    i++
+                }
+                this.$emit('new-title', [this.title,this.subtasks]);
+                this.$store.commit('updateValue', [this.title,this.subtasks])
             }
         },
     }

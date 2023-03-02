@@ -7,6 +7,7 @@
   <my-button>
     <router-link to="/add" class="router">Добавить задачу</router-link>
   </my-button>
+  <h1>{{ tasks }}</h1>
   <task-item></task-item>
 
   </div>
@@ -15,15 +16,19 @@
 <script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
-
+import { mapState } from 'vuex'
 export default {
+  
   // name: 'HomeView',
   // components: {
   //   HelloWorld
   // }
   created() {
       console.log('object');
-  }
+  },
+  computed: {
+    ...mapState(['tasks'])
+}
 }
 </script>
 <style lang="scss">
