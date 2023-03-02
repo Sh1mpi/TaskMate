@@ -4,8 +4,7 @@
       <my-logo></my-logo>
       <my-search></my-search>
     </my-nav>
-  <my-button class="add-btn">
-    <!-- <a href="#">Добавить задачу</a> -->
+  <my-button>
     <router-link to="/add" class="router">Добавить задачу</router-link>
   </my-button>
   <task-item></task-item>

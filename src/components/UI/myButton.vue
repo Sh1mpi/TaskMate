@@ -13,27 +13,47 @@
             add(event) {
                 let href = event.target.getAttribute('href')
                 if (href ==null){
-                    href = event.target.firstElementChild.getAttribute('href')
-                }
+                    try {
+                        href = event.target.firstElementChild.getAttribute('href')
+                        if (href == null) {
+                            throw new Error('is not a link')
+                        }
+                        let button = event.target
+                        if (button.tagName != 'BUTTON') {
+                            button = button.parentElement
+                        }
+                        button.classList.add('btn__active')
+                        console.log(this);
+                        setTimeout(()=>{ 
+                            button.classList.remove('btn__active');
+                            this.$router.push(href);
+                        },300);
 
-                let button = document.querySelector('.btn_first')
-                button.classList.add('btn__active')
-                setTimeout(()=>{ button.classList.remove('btn__active');
-                this.$router.push({ path: `${href}`})},300);
-        
+                    }
+                    catch {
+                        let button = event.target
+                        if (button.tagName != 'BUTTON') {
+                            button = button.parentElement
+                        }
+                        button.classList.add('btn__active')
+                        setTimeout(()=>{ button.classList.remove('btn__active')},300);
+                        event.preventDefault();
+                    }
+                }
             },
             
-        }
+        }, 
     }
     
 </script>
+vue
 <style scoped lang="scss">
 
 .btn {
     display: inline-flex;
     position: relative;
     min-height: 47px;
-    & button {
+    & .btn_first {
     font-size: 24px;
     font-family: 'Montserrat-Regular';
     background: linear-gradient(268.16deg, #DECAFD 8.7%, #DDCAFD 98.44%);
@@ -54,6 +74,16 @@
     border-radius: 15px;
     margin-top: 22px;
     }
+}
+#green button {
+    background: linear-gradient(268.16deg, #8AF3BF 8.7%, #6BE9A9 98.44%);
+    box-shadow: 0px 10px 10px 1px rgba(102, 185, 110, 0.3);
+}
+#green button a {
+    color: black;
+}
+#green div {
+    background: #66B96E;
 }
 @keyframes anim {
     50% {

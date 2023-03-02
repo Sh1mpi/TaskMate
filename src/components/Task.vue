@@ -1,5 +1,5 @@
 <template>
-    <div class="tasks">
+    <div @new-task="newTask" class="tasks">
         <div class="task" v-for="task in tasks">
                 <!-- <div>{{ task.id }}</div> -->
                 <div class="title"><input type="checkbox" :id="task.id"/><label :for="task.id"><span></span></label><strong>{{ task.title }}</strong></div>
@@ -28,6 +28,9 @@
             }
         },
         methods:{
+            newTask(data) {
+                console.log(data);
+            }
             
         },
         created(){
