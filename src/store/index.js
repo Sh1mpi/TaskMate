@@ -6,7 +6,6 @@ export default createStore({
       },
       mutations: {
         updateValue(state, payload) {
-            debugger;
           state.tasks.push(payload)
         }
       }

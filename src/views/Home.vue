@@ -23,11 +23,9 @@ export default {
   // components: {
   //   HelloWorld
   // }
-  created() {
-      console.log('object');
-  },
   computed: {
-    ...mapState(['tasks'])
+    ...mapState(['tasks']),
+
 }
 }
 </script>

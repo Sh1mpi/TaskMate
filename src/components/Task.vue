@@ -33,8 +33,13 @@
             }
             
         },
-        created(){
-            
+        computed: {
+            vuexTasks(){
+                return this.$store.state.tasks
+            }
+        },
+        mounted() {
+            this.tasks = [...this.tasks, ...this.vuexTasks]
         }
     }
 </script>

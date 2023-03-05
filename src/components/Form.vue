@@ -29,6 +29,7 @@
         name: 'my-form',
         data() {
             return {
+                id: 0,
                 title: '',
                 subtasks: [],
             }
@@ -45,8 +46,6 @@
                 });
             },
             save() {
-                debugger;
-                let output = [this.title]
                 let i = 0
                 while (i < this.subtasks.length){
                     if(this.subtasks[i].content === ''){
@@ -54,8 +53,14 @@
                     }
                     i++
                 }
-                this.$emit('new-title', [this.title,this.subtasks]);
-                this.$store.commit('updateValue', [this.title,this.subtasks])
+                this.id +=1
+                let output = {
+                    id: this.id,
+                    title: this.title,
+                    subtasks: this.subtasks,
+                }
+                // this.$store.commit('updateValue', ["id":this.id,this.title,this.subtasks])
+                this.$store.commit('updateValue', output)
             }
         },
     }
@@ -125,16 +130,6 @@ form {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        // & .green::v-deep button {
-        //     background: linear-gradient(268.16deg, #8AF3BF 8.7%, #6BE9A9 98.44%);
-        //     box-shadow: 0px 10px 10px 1px rgba(102, 185, 110, 0.3);
-        //     & a{
-        //         color: black;
-        //     }
-        // }
-        // & .green::v-deep div {
-        //     background: #66B96E;
-        // }
         & .green-link {
             color: black;
         }
