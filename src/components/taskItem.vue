@@ -1,49 +1,59 @@
-<template>
-    <div @new-task="newTask" class="tasks">
-        <div class="task" v-for="task in tasks">
-                <!-- <div>{{ task.id }}</div> -->
-                <div class="title"><input type="checkbox" :id="task.id"/><label :for="task.id"><span></span></label><strong>{{ task.title }}</strong></div>
-                <div class="date">
-                    <strong>Дата создания:</strong>{{ new Date().toLocaleString().split(',')[0] }}
-                </div>
-                <div class="subtasks">
-                    <div v-for="subtask in task.subtasks">
-                        <input type="checkbox" :id="'sub'+task.id + task.subtasks.indexOf(subtask)"/><label :for="'sub'+task.id+ task.subtasks.indexOf(subtask)"><span></span></label><p>{{ subtask }}</p>
-                    </div>
-                </div>
+  <template>
+    <div class="task" v-if="task">
+      <img src="@/assets/edit.svg" alt="" class="edit" @click="$router.push(`/tasks/${task.id}`)">
+      <div class="title">
+        <input type="checkbox" :id="task.id" @click="check" />
+        <label :for="task.id"><span></span></label>
+        <strong class="title__content">{{ task.title }}</strong>
+      </div>
+      <div class="date">
+        <strong>Дата создания:</strong>
+        {{ new Date().toLocaleString().split(",")[0] }}
+      </div>
+      <div class="subtasks">
+        <div v-for="subtask in task.subtasks" :key="subtask.id">
+          <input
+            type="checkbox"
+            :id="'sub'+task.id + subtask.id"
+            :disabled="subtask.disabled"
+          />
+          <label :for="'sub'+task.id+ subtask.id"><span></span></label>
+          <p>{{ subtask.content }}</p>
         </div>
+      </div>
     </div>
-</template>
-<script>
-    export default{
-        name: 'task-item',
-        data(){
-            return{
-                tasks: [
-                    {id:1,title:'lorem ipsum1',subtasks:['lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum']},
-                    {id:2,title:'lorem ipsum2',subtasks:['1','2']},
-                    {id:3,title:'lorem ipsum3',subtasks:['1','2','3']},
-                    {id:4,title:'lorem ipsum4',subtasks:['1','2','3','4']},
-                ],
-            }
-        },
-        methods:{
-            newTask(data) {
-                console.log(data);
-            }
-            
-        },
-        computed: {
-            vuexTasks(){
-                return this.$store.state.tasks
-            }
-        },
-        mounted() {
-            this.tasks = [...this.tasks, ...this.vuexTasks]
-        }
-    }
-</script>
-<style lang="scss" scoped>
+    <div v-else>Task not found</div>
+  </template>
+  
+  <script>
+  export default {
+    props: {
+      tasks: {
+        type: Object,
+        required: true,
+      },
+      check: {
+      type: Function,
+      required: true,
+    },
+      
+    },
+    name: "task-item",
+    computed: {
+      task() {
+        return this.tasks || null;
+      },
+    },
+    methods: {
+      check(event) {
+        this.check(event);
+        
+      },
+      
+    },
+  };
+  </script>
+<style lang="scss">
 .task{
     width: 668px;
     min-height: 250px;
@@ -56,6 +66,17 @@
     text-align: left;
     display: flex;
     flex-direction: column;
+    position: relative;
+    & .edit {
+      width: 25px;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      transition: .5s;
+      &:hover {
+        transform: scale(.8,.8);
+      }
+    }
 }
 .title {
     margin-top: 20px;
@@ -91,6 +112,10 @@
         border-radius: 100px;
         transition: .2s;
     }
+    & .title__content{
+      width: 300px;
+      overflow-wrap: break-word;
+    }
     & input:checked + label {
         background: #7BF0B6;
         & span {
@@ -103,6 +128,9 @@
             transform: scale(150%);
             bottom:13px;
         }
+    }
+    & input:checked + label + .title__content {
+        text-decoration: line-through;
     }
     
 }
@@ -153,10 +181,12 @@
             bottom: 3px;
         }
     }
+    & input:checked + label + p {
+        text-decoration: line-through;
+    }
 }
 
 .tasks {
     margin-bottom: 100px;
 }
-
 </style>

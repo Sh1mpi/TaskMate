@@ -8,7 +8,7 @@
     <router-link to="/add" class="router">Добавить задачу</router-link>
   </my-button>
   <h1>{{ tasks }}</h1>
-  <task-item></task-item>
+  <task-list></task-list>
 
   </div>
 </template>
@@ -35,11 +35,11 @@ body {
 }
 .back {
   background-image: url('@/assets/background.svg');
-  background-size: 100%;
-  background-repeat: no-repeat;
+  background-size: cover;
   margin:0;
   position: absolute;
   width:100%;
+  min-height: 100vh;
   top: 0;
   z-index: -1;
 

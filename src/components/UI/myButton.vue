@@ -23,7 +23,6 @@
                             button = button.parentElement
                         }
                         button.classList.add('btn__active')
-                        console.log(this);
                         setTimeout(()=>{ 
                             button.classList.remove('btn__active');
                             this.$router.push(href);
