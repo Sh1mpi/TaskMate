@@ -10,10 +10,11 @@
         name: 'task-list',
         data(){
             return{
-                tasks: [
-                    // {id:0,title:'lorem ipsum1',subtasks:[{"id":1,"show":true,"content":'lorem ipsum lorem ipsum '},{"id":2,"show":true,"content":'kek'}]},
-                ],
+                tasks: [],
             }
+        },
+        props: {
+            filter: String
         },
         methods:{
             check(event) {
@@ -31,6 +32,12 @@
         computed: {
             vuexTasks(){
                 return this.$store.state.tasks
+            },
+            filteredTasks() {
+                const search = this.filter ? this.filter.toLowerCase().trim() : ''
+                return this.tasks.filter(task => {
+                    return task.title.toLowerCase().includes(search)
+                })
             }
         },
         mounted() {

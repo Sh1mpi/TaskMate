@@ -1,14 +1,25 @@
 <template>
     <div>
-        <img src="@/assets/magnifier.svg" alt="">
-        <input type="text">
+      <img src="@/assets/magnifier.svg" alt="">
+      <input type="text" v-model="inputValue" @input="updateParent" disabled>
     </div>
-</template>
-<script>
-    export default{
-        name: 'my-search'
+  </template>
+  
+  <script>
+  export default {
+    name: 'my-search',
+    data(){
+        return {
+            inputValue: ''
+        }
+    },
+    methods: {
+        updateParent() {
+           this.$store.commit('updateSearch', this.inputValue)
+        }
     }
-</script>
+  };
+  </script>
 <style lang="scss" scoped>
     div {
         position: relative;
@@ -27,6 +38,7 @@
         font-family: 'Montserrat-Medium';
         padding-left: 50px;
         transition: all .5s;
+        cursor:not-allowed;
         &:focus {
             outline: none;
             width: 670px;

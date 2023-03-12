@@ -8,23 +8,34 @@
     <router-link to="/add" class="router">Добавить задачу</router-link>
   </my-button>
   <h1>{{ tasks }}</h1>
-  <task-list></task-list>
+  <task-list :tasks="sortedAndSearchedTasks"></task-list>
 
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
 import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   
-  // name: 'HomeView',
-  // components: {
-  //   HelloWorld
-  // }
+  data(){
+    return {
+      searchQuery: ''
+    }
+  },
   computed: {
     ...mapState(['tasks']),
+    ...mapGetters(['search']),
+    sortedAndSearchedTasks() {
+    const search = this.search ? this.search.toLowerCase().trim() : ''
+    let s = this.tasks.filter(task => {
+      return task.title.toLowerCase().includes(search)
+    })
+    if (s != ''){
+
+      this.$store.commit('filter', s)
+    }
+  }
 
 }
 }

@@ -16,6 +16,9 @@
             type="checkbox"
             :id="'sub'+task.id + subtask.id"
             :disabled="subtask.disabled"
+            @click="subCheck"
+            :checked="subtaskChecked(subtask)"
+            v-model="subtask.show"
           />
           <label :for="'sub'+task.id+ subtask.id"><span></span></label>
           <p>{{ subtask.content }}</p>
@@ -43,12 +46,41 @@
       task() {
         return this.tasks || null;
       },
+      subtaskChecked() {
+        return function(subtask) {
+          return subtask.show;
+        };
+      },
     },
     methods: {
-      check(event) {
-        this.check(event);
+      // check(event) {
+      //   this.check(event);
         
-      },
+      // },
+      subCheck(event){
+        let st = event.target.id
+        let targ = ''
+        st = st.split("sub").pop()
+        let sub_id = Number(st.substr(st.length-1,1))
+        st = st.slice(0,-1)
+        let tasks = this.$store.state.tasks
+        for (let i =0;i<tasks.length;i++){
+          if(tasks[i].id == st) {
+            targ = tasks[i]
+          }
+        }
+        for (let i=0;i<targ.subtasks.length;i++){
+          if (targ.subtasks[i].id == sub_id){
+            if (targ.subtasks[i].show == true){
+              targ.subtasks[i].show = false
+            }
+            else{
+              targ.subtasks[i].show = true
+            }
+          }
+          console.log(targ.subtasks);
+        }
+      }
       
     },
   };

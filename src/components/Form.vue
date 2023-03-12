@@ -13,7 +13,7 @@
             </div>
             <div class="fieldset-content">
                 <p class="fieldset-content__name">Введите название</p>
-                <input type="text" v-model="title" class="input">
+                <input type="text" v-model="title" class="input" ref="titleInput">
                     <div class="fieldset-content__subtasks">
                         <transition-group name="fade">
                             <my-subtask v-for="subtask in subtasks" :key="subtask.id" :value="subtask.content" :id="subtask.id" @input="update(subtask.id,$event.target.value)"></my-subtask>
@@ -43,10 +43,25 @@
                 messages: [],
             }
         },
-        created(){
+        mounted(){
             // placeholders
             if (this.new_id != 0){
-                console.log('kek');
+                let ts = this.$store.state.tasks
+                for(let i =0;i<ts.length;i++){
+                    if(ts[i].id === this.new_id){
+                        let title = this.$refs.titleInput;
+                        title.placeholder = ts[i].title
+                        console.log(ts[i].subtasks);
+                        let count = 0
+                        while(count < ts[i].subtasks.length){
+                            console.log('kek');
+                            count+=1
+                        }
+                        // for(let i = 0;i<ts[i].subtasks.length;i++){
+                        //     console.log(i);
+                        // }
+                    }
+                }
             }
         },
         methods: {
@@ -56,7 +71,7 @@
             addSubtask() {
                 this.subtasks.push({
                     id: this.subtasks.length + 1,
-                    show: true,
+                    show: false,
                     content: ''
                 });
             },
