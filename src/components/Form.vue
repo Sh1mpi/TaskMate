@@ -76,6 +76,15 @@
                 });
             },
             save() {
+                if (this.title.trim() === '') {
+                    // Title is empty, return early without saving
+                    let message = `заполните название задачи`;
+                    this.messages.push(message);
+                    setTimeout(() => {
+                        this.messages.pop();
+                    }, 3000);
+                    return;
+                }
                 let indexesToDelete = []
                 for (let i = 0; i < this.subtasks.length; i++) {
                     if (this.subtasks[i].content === '') {
@@ -210,7 +219,7 @@ form {
     }
 }
 .messages {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
 }

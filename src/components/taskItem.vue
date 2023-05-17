@@ -78,7 +78,6 @@
               targ.subtasks[i].show = true
             }
           }
-          console.log(targ.subtasks);
         }
       }
       
@@ -197,8 +196,8 @@
         
     }
     & label span {
-        width: 17.14px;
-        height: 17.14px;
+        width: 17px;
+        height: 17px;
     }
     & input:checked + label {
         & span {

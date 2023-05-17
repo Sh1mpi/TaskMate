@@ -7,7 +7,7 @@
   <my-button>
     <router-link to="/add" class="router">Добавить задачу</router-link>
   </my-button>
-  <h1>{{ tasks }}</h1>
+  <!-- <h1>{{ tasks }}</h1> -->
   <task-list :tasks="sortedAndSearchedTasks"></task-list>
 
   </div>

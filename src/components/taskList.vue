@@ -43,10 +43,8 @@
         mounted() {
             this.tasks = [...this.tasks, ...this.vuexTasks]
             if (this.tasks.length === 0){
-                this.tasks.push({id:0,title:'lorem ipsum1',subtasks:[{"id":1,"show":true,"content":'lorem ipsum lorem ipsum '},{"id":2,"show":true,"content":'kek'}]})
-            }
-            else {
-                console.log(this.tasks);
+                this.tasks.push({id:0,title:'тестовая задача',
+                subtasks:[{"id":1,"show":false,"content":'тестовый подзаголовок 1'},{"id":2,"show":false,"content":'тестовый подзаголовок 2'}]})
             }
         }
     }
