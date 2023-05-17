@@ -86,7 +86,7 @@
   </script>
 <style lang="scss">
 .task{
-    width: 668px;
+    max-width: 668px;
     min-height: 250px;
     background: #FDFEFE;
     box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.15);
@@ -110,7 +110,7 @@
     }
 }
 .title {
-    margin-top: 20px;
+    margin-top: 50px;
     margin-left: 20px;
     font-size: 24px;
     font-family: 'Montserrat-Medium';
@@ -185,8 +185,13 @@
 
     & p {
         margin: 0;
-        max-width: 550px;
+        max-width: 300px;
+        word-wrap: break-word;
+        @media (min-width:750px) {
+          max-width: 550px;
+        }
     }
+    
 
     & label {
         min-width: 30px;

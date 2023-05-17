@@ -63,4 +63,8 @@
   transform: translateX(30px);
 }
 
+.tasks{
+    padding: 0 10px;
+}
+
 </style>

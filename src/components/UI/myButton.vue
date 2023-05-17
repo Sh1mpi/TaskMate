@@ -53,13 +53,13 @@ vue
     position: relative;
     min-height: 47px;
     & .btn_first {
-    font-size: 24px;
+    font-size: 1.2rem;
     font-family: 'Montserrat-Regular';
     background: linear-gradient(268.16deg, #DECAFD 8.7%, #DDCAFD 98.44%);
     box-shadow: 0px 10px 10px 1px rgba(124, 102, 185, 0.3);
     border-radius: 15px;
     border: 0px;
-    padding: 0 20px;
+    padding: 0 10px;
     z-index: 1;
     }
     & .btn__active{
@@ -74,6 +74,7 @@ vue
     margin-top: 22px;
     }
 }
+
 #green button {
     background: linear-gradient(268.16deg, #8AF3BF 8.7%, #6BE9A9 98.44%);
     box-shadow: 0px 10px 10px 1px rgba(102, 185, 110, 0.3);

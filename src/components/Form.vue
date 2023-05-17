@@ -7,22 +7,24 @@
     <form @submit.prevent>
         <div class="fieldset">
             <div class="form-background">
-                <router-link to="/">
-                    <img src="@/assets/exit.svg" alt="" class="exit">
+                <router-link to="/" class="exit">
+                    <img src="@/assets/exit.svg" alt="">
                 </router-link>
             </div>
-            <div class="fieldset-content">
-                <p class="fieldset-content__name">Введите название</p>
-                <input type="text" v-model="title" class="input" ref="titleInput">
-                    <div class="fieldset-content__subtasks">
-                        <transition-group name="fade">
-                            <my-subtask v-for="subtask in subtasks" :key="subtask.id" :value="subtask.content" :id="subtask.id" @input="update(subtask.id,$event.target.value)"></my-subtask>
-                        </transition-group>
-                    </div>
-            </div>
-            <div class="btns">
-                <my-button @click="addSubtask"><span>Добавить подзадачу</span></my-button>
-                <my-button v-bind:id="'green'" @click.prevent="save">Сохранить</my-button>
+            <div class="form-content">
+                <div class="fieldset-content">
+                    <p class="fieldset-content__name">Введите название</p>
+                    <input type="text" v-model="title" class="input" ref="titleInput">
+                        <div class="fieldset-content__subtasks">
+                            <transition-group name="fade">
+                                <my-subtask v-for="subtask in subtasks" :key="subtask.id" :value="subtask.content" :id="subtask.id" @input="update(subtask.id,$event.target.value)"></my-subtask>
+                            </transition-group>
+                        </div>
+                </div>
+                <div class="btns">
+                    <my-button @click="addSubtask"><span>Добавить подзадачу</span></my-button>
+                    <my-button v-bind:id="'green'" @click.prevent="save">Сохранить</my-button>
+                </div>
             </div>
         </div>
 
@@ -126,7 +128,7 @@
 </script>
 <style lang="scss" scoped>
 form {
-    margin: 100px 0;
+    margin: 100px 5px;
     border: none;
 }
 .fade-move, /* apply transition to moving elements */
@@ -152,8 +154,12 @@ form {
   opacity: 0;
   transform: translateY(-30px);
 }
+
+.form-content{
+    padding: 0 10px;
+}
 .input {
-        width: 521px;
+        // max-width: 521px;
         height: 43px;
         background: #FFFFFF;
         border: 1px solid #7C66B9;
@@ -168,7 +174,7 @@ form {
         }
     }
 .fieldset {
-    width: 668px;
+    max-width: 668px;
     min-height: 453px;
     background: linear-gradient(260.83deg, #414567 6.38%, #414669 102.61%);
     border-radius: 28px;
@@ -179,8 +185,7 @@ form {
     overflow: hidden;
 }
 .fieldset-content {
-    margin-top: 200px;
-    margin-left: 55px;
+    margin-top: 100px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -200,22 +205,26 @@ form {
         margin-top: 60px;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-between;
+}
+
+@media (min-width: 650px) {
+    .form-content {
+        padding: 0 40px;
+    }
 }
 
 .form-background {
-    width: 834px;
-    height: 210px;
-    border-radius: 50%;
+    width: 100%;
+    height: 80px;
+    border-radius: 0 0 50% 50%;
     position: absolute;
-    top: -100px;
-    left: -83px;
     margin: 0 auto;
     background: #F9F7FA;
     & .exit {
         position: absolute;
-        top: 120px;
-        right: 100px;
+        top: 10px;
+        right: 10%;
     }
 }
 .messages {

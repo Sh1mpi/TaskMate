@@ -23,14 +23,13 @@
 <style lang="scss" scoped>
     div {
         position: relative;
-        min-width: 668px;
+        max-width: 668px;
         display: flex;
         align-items: center;
-        margin-left: 100px;
     }
 
     input {
-        width: 668px;
+        width: 100px;
         height: 36px;
         border-radius: 18px;
         border: 1px solid #7C66B9;
@@ -49,6 +48,16 @@
             // height: 40px;
             background: rgba($color: #a6a6a6, $alpha: .1);
 
+        }
+    }
+    @media (min-width: 750px) {
+        input {
+            width: 250px;
+        }
+    }
+    @media (min-width: 1200px) {
+        input {
+            width: 668px;
         }
     }
     img {

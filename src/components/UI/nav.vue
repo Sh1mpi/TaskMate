@@ -16,7 +16,8 @@
   align-items: center;
   justify-content: space-around;
   margin: 46px auto;
-  width: 1200px;
+  max-width: 1200px;
   min-height: 36px;
+  padding: 0 10px;
 }
 </style>

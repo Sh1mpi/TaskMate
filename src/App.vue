@@ -38,5 +38,9 @@ nav {
     }
   }
 }
+
+// * {
+//   outline: 1px solid red;
+// }
 </style>
 
