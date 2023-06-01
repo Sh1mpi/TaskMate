@@ -27,14 +27,6 @@ export default {
     ...mapState(['tasks']),
     ...mapGetters(['search']),
     sortedAndSearchedTasks() {
-    const search = this.search ? this.search.toLowerCase().trim() : ''
-    let s = this.tasks.filter(task => {
-      return task.title.toLowerCase().includes(search)
-    })
-    if (s != ''){
-
-      this.$store.commit('filter', s)
-    }
   }
 
 }

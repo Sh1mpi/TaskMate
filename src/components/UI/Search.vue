@@ -38,13 +38,9 @@
         padding-left: 50px;
         transition: all .5s;
         cursor:not-allowed;
-        &:focus {
-            outline: none;
-            width: 670px;
-        }
         &:hover {
             // border: 2px solid #7C66B9;
-            width: 675px;
+            width: 110px;
             // height: 40px;
             background: rgba($color: #a6a6a6, $alpha: .1);
 
@@ -53,11 +49,17 @@
     @media (min-width: 750px) {
         input {
             width: 250px;
+            &:hover {
+                width: 270px;
+            }
         }
     }
     @media (min-width: 1200px) {
         input {
-            width: 668px;
+            width: 600px;
+            &:hover {
+                width: 668px;
+            }
         }
     }
     img {

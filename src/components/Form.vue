@@ -15,6 +15,7 @@
                 <div class="fieldset-content">
                     <p class="fieldset-content__name">Введите название</p>
                     <input type="text" v-model="title" class="input" ref="titleInput">
+                    <p class="counter" ref="symbolCount" :style="{ color: counterColor }">{{ title.length > 20 ? `-${title.length - 20}` : `${title.length}/20` }}</p>
                         <div class="fieldset-content__subtasks">
                             <transition-group name="fade">
                                 <my-subtask v-for="subtask in subtasks" :key="subtask.id" :value="subtask.content" :id="subtask.id" @input="update(subtask.id,$event.target.value)"></my-subtask>
@@ -43,10 +44,10 @@
                 title: '',
                 subtasks: [],
                 messages: [],
+                counterColor: 'white' 
             }
         },
         mounted(){
-            // placeholders
             if (this.new_id != 0){
                 let ts = this.$store.state.tasks
                 for(let i =0;i<ts.length;i++){
@@ -59,10 +60,18 @@
                             console.log('kek');
                             count+=1
                         }
-                        // for(let i = 0;i<ts[i].subtasks.length;i++){
-                        //     console.log(i);
-                        // }
                     }
+                }
+            }
+        },
+        watch: {
+            title(newTitle) {
+                if (newTitle.trim().length > 20) {
+                this.counterColor = 'red';
+                } else if (newTitle.trim().length > 15) {
+                this.counterColor = 'yellow';
+                } else {
+                this.counterColor = 'white';
                 }
             }
         },
@@ -77,10 +86,24 @@
                     content: ''
                 });
             },
+            updateTextColor(color) {
+                // Update the text color of the .input field
+                const titleInput = this.$refs.titleInput;
+                titleInput.style.color = color;
+            },
             save() {
                 if (this.title.trim() === '') {
                     // Title is empty, return early without saving
                     let message = `заполните название задачи`;
+                    this.messages.push(message);
+                    setTimeout(() => {
+                        this.messages.pop();
+                    }, 3000);
+                    return;
+                }
+                if (this.title.trim().length > 20){
+                    let title = document.querySelector('.input');
+                    let message = `максимальная длина 20 символов`;
                     this.messages.push(message);
                     setTimeout(() => {
                         this.messages.pop();
@@ -97,10 +120,12 @@
                     this.subtasks.splice(indexesToDelete[i], 1)
                 }
                 this.id = Math.random().toString(36);
+                let date = new Date();
                 let output = {
                     id: this.id,
                     title: this.title,
                     subtasks: this.subtasks,
+                    time: new Intl.DateTimeFormat('ru', {year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute: "numeric"}).format(date)
                 }
                 if (this.new_id ==0){
                     this.$store.commit('updateValue', output)
@@ -206,6 +231,11 @@ form {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+}
+
+.counter {
+    color: white;
+    text-align: right;
 }
 
 @media (min-width: 650px) {

@@ -8,7 +8,7 @@
       </div>
       <div class="date">
         <strong>Дата создания:</strong>
-        {{ new Date().toLocaleString().split(",")[0] }}
+        {{ task.time }}
       </div>
       <div class="subtasks">
         <div v-for="subtask in task.subtasks" :key="subtask.id">

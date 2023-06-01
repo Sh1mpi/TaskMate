@@ -43,8 +43,11 @@
         mounted() {
             this.tasks = [...this.tasks, ...this.vuexTasks]
             if (this.tasks.length === 0){
+                let date = new Date()
                 this.tasks.push({id:0,title:'тестовая задача',
-                subtasks:[{"id":1,"show":false,"content":'тестовый подзаголовок 1'},{"id":2,"show":false,"content":'тестовый подзаголовок 2'}]})
+                subtasks:[{"id":1,"show":false,"content":'тестовый подзаголовок 1'},{"id":2,"show":false,"content":'тестовый подзаголовок 2'}],
+                time: new Intl.DateTimeFormat('ru', {year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute: "numeric"}).format(date)
+            })
             }
         }
     }
